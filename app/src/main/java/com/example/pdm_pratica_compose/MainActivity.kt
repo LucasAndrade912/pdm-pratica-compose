@@ -6,15 +6,24 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -91,10 +100,82 @@ fun TaskManagerCompose(modifier: Modifier = Modifier) {
     }
 }
 
+@Composable
+fun QuadrantesCompose(modifier: Modifier = Modifier) {
+    LazyVerticalGrid(
+        columns = GridCells.Fixed(2), // Define o número fixo de colunas
+        modifier = Modifier.fillMaxSize()
+    ) {
+        item {
+            Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                Card(
+                    colors = CardDefaults.cardColors(
+                        containerColor = Color(0xFFEADDFF)
+                    )
+                ) {
+                    Text(
+                        text = "Text composable", modifier = Modifier.padding(bottom = 16.dp),
+                        fontWeight = FontWeight.Bold
+                    )
+                    Text(text = "Displays text and follows the recommended Material Design guidelines.")
+                }
+            }
+        }
+
+        item {
+            Box(modifier = Modifier.fillMaxSize()) {
+                Card(
+                    colors = CardDefaults.cardColors(
+                        containerColor = Color(0xFFD0BCFF)
+                    )
+                ) {
+                    Text(
+                        text = "Image composable", modifier = Modifier.padding(bottom = 16.dp),
+                        fontWeight = FontWeight.Bold
+                    )
+                    Text(text = "Creates a composable that lays out and draws a given Painter class object.")
+                }
+            }
+        }
+
+        item {
+            Box(modifier = Modifier.fillMaxSize()) {
+                Card(
+                    colors = CardDefaults.cardColors(
+                        containerColor = Color(0xFFB69DF8)
+                    )
+                ) {
+                    Text(
+                        text = "Row composable", modifier = Modifier.padding(bottom = 16.dp),
+                        fontWeight = FontWeight.Bold
+                    )
+                    Text(text = "A layout composable that places its children in a horizontal sequence.")
+                }
+            }
+        }
+
+        item {
+            Box(modifier = Modifier.fillMaxSize()) {
+                Card(
+                    colors = CardDefaults.cardColors(
+                        containerColor = Color(0xFFEADDFF)
+                    )
+                ) {
+                    Text(
+                        text = "Column composable", modifier = Modifier.padding(bottom = 16.dp),
+                        fontWeight = FontWeight.Bold
+                    )
+                    Text(text = "A layout composable that places its children in a vertical sequence.")
+                }
+            }
+        }
+    }
+}
+
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
     PdmpraticacomposeTheme {
-        TaskManagerCompose()
+        QuadrantesCompose()
     }
 }
